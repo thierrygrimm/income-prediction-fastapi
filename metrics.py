@@ -37,7 +37,7 @@ X_test, y_test, encoder, lb = process_data(
     test, categorical_features=cat_features, label="salary", training=False, encoder=encoder, lb=lb
 )
 
-for cat in ["workclass", "race", "sex"]:
+for cat in ["workclass", "race", "sex", "relationship"]:
     logger.info(f"Category {cat}:")
     logger.info("\n")
     for val in test[cat].unique():

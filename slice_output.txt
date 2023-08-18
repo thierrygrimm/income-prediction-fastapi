@@ -1,0 +1,108 @@
+Category workclass:
+
+
+Private
+Precision: 0.732, Recall: 0.616, fbeta: 0.669
+
+
+Self-emp-not-inc
+Precision: 0.743, Recall: 0.571, fbeta: 0.646
+
+
+Local-gov
+Precision: 0.701, Recall: 0.641, fbeta: 0.669
+
+
+Federal-gov
+Precision: 0.75, Recall: 0.714, fbeta: 0.732
+
+
+?
+Precision: 0.567, Recall: 0.459, fbeta: 0.507
+
+
+Self-emp-inc
+Precision: 0.754, Recall: 0.785, fbeta: 0.769
+
+
+State-gov
+Precision: 0.723, Recall: 0.691, fbeta: 0.707
+
+
+Without-pay
+Precision: 1.0, Recall: 1.0, fbeta: 1.0
+
+
+_____________________________________________________________
+
+
+Category race:
+
+
+White
+Precision: 0.727, Recall: 0.637, fbeta: 0.679
+
+
+Asian-Pac-Islander
+Precision: 0.75, Recall: 0.667, fbeta: 0.706
+
+
+Black
+Precision: 0.787, Recall: 0.521, fbeta: 0.627
+
+
+Amer-Indian-Eskimo
+Precision: 0.833, Recall: 0.556, fbeta: 0.667
+
+
+Other
+Precision: 0.5, Recall: 0.429, fbeta: 0.462
+
+
+_____________________________________________________________
+
+
+Category sex:
+
+
+Female
+Precision: 0.744, Recall: 0.528, fbeta: 0.618
+
+
+Male
+Precision: 0.727, Recall: 0.651, fbeta: 0.687
+
+
+_____________________________________________________________
+
+
+Category relationship:
+
+
+Wife
+Precision: 0.71, Recall: 0.632, fbeta: 0.669
+
+
+Husband
+Precision: 0.723, Recall: 0.691, fbeta: 0.707
+
+
+Not-in-family
+Precision: 0.824, Recall: 0.378, fbeta: 0.519
+
+
+Own-child
+Precision: 0.833, Recall: 0.312, fbeta: 0.455
+
+
+Unmarried
+Precision: 0.857, Recall: 0.316, fbeta: 0.462
+
+
+Other-relative
+Precision: 0.0, Recall: 0.0, fbeta: 0.0
+
+
+_____________________________________________________________
+
+
