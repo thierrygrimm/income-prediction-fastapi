@@ -15,7 +15,6 @@ logger = logging.getLogger()
 logger.info("Loading the dataset")
 data = pd.read_csv("./data/census.csv")
 
-# Optional enhancement, use K-fold cross validation instead of a train-test split.
 logger.info("Splitting the dataset 80:20")
 train, test = train_test_split(data, test_size=0.20)
 
