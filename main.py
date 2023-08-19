@@ -16,10 +16,11 @@ app = FastAPI(
 
 ############################################# Startup
 
-# Load model
+# Load model with async
 @app.on_event('startup')
 async def load_model():
-    app.model = joblib.load("model/rfc_model.pkl")
+    global model
+    model = joblib.load("model/rfc_model.pkl")
 
 
 ############################################# Endpoint 1
@@ -85,4 +86,4 @@ class Input(BaseModel):
 async def predict_from_data(data: Input):
     input_data = pd.DataFrame([data.dict()])
     input_data.columns = input_data.columns.str.replace("_", "-")
-    return {"prediction": inference(app.model, input_data)}
+    return {"prediction": inference(model, input_data)}
