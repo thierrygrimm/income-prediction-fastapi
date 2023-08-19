@@ -14,7 +14,7 @@ test = pd.read_csv("./data/test.csv")
 
 # Load in the OneHotEncoder, LabelBinarizer and Model
 encoder = joblib.load("model/OHE.pkl")
-lb = joblib.load('model/LB.pkl')
+lb = joblib.load("model/LB.pkl")
 model = joblib.load("model/rfc_model.pkl")
 
 # Categorical Features
@@ -41,12 +41,9 @@ for cat in ["workclass", "race", "sex", "relationship"]:
     logger.info(f"Category {cat}:")
     logger.info("\n")
     for val in test[cat].unique():
-        #print(test[test[cat] == val])
         X_slice, y_slice, encoder, lb = process_data(
             test[test[cat] == val], categorical_features=cat_features, label="salary", training=False, encoder=encoder, lb=lb
         )
-        #print(np.shape(y_slice))
-        #print(np.shape(X_slice))
 
         precision, recall, fbeta, _ = compute_model_metrics(y_slice, model.predict(X_slice))
         logger.info(f"{val}")
