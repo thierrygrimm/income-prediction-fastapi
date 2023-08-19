@@ -33,12 +33,12 @@ async def say_hello():
 ############################################# Endpoint 2
 
 
-def hypenize(string: str) -> str:
+def hyphenize(string: str) -> str:
     return string.replace("_", "-")
 
 
 class Input(BaseModel):
-    Body(model_config=ConfigDict(alias_generator=hypenize))
+    Body(model_config=ConfigDict(alias_generator=hyphenize))
 
     class Config:
         use_enum_values = True
@@ -83,6 +83,6 @@ class Input(BaseModel):
 # Parameters which are not declared in the path are automatically query parameters
 @app.post("/predict")
 async def predict_from_data(data: Input):
-    input = pd.DataFrame([data.dict()])
-    input.columns = input.columns.str.replace("_", "-")
-    return {"prediction": inference(app.model, input)}
+    input_data = pd.DataFrame([data.dict()])
+    input_data.columns = input_data.columns.str.replace("_", "-")
+    return {"prediction": inference(app.model, input_data)}
