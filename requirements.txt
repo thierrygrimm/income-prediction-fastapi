@@ -7,7 +7,7 @@ pandas
 pydantic
 pytest
 requests
-scikit-learn
+scikit-learn==1.2.2
 starlette
 typing-extensions
 uvicorn
