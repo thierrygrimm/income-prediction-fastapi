@@ -18,6 +18,7 @@ data = pd.read_csv("./data/census.csv")
 logger.info("Splitting the dataset 80:20")
 train, test = train_test_split(data, test_size=0.20)
 
+logger.info("Saving the train and test set")
 train.to_csv("./data/train.csv", index=False)
 test.to_csv("./data/test.csv", index=False)
 
@@ -43,9 +44,8 @@ logger.info("Training the model")
 model = train_model(X_train, y_train)
 logger.info("Model successfully trained.")
 
-# Metrics
-logger.info("Processing the test data")
 # Process the test data with the process_data function.
+logger.info("Processing the test data")
 X_test, y_test, encoder, lb = process_data(
     test, categorical_features=cat_features, label="salary", training=False, encoder=encoder, lb=lb
 )
