@@ -1,3 +1,4 @@
+pytest-cov
 fastapi==0.101.0
 gunicorn
 httpx
