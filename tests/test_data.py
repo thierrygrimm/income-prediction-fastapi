@@ -34,6 +34,28 @@ def data():
 
 
 @pytest.fixture(scope='session')
+def data_with_label():
+    input_data_with_label = {
+        "age": 50,
+        "workclass": "Self-emp-inc",
+        "fnlgt": 77516,
+        "education": "Masters",
+        "education-num": 20,
+        "marital-status": "Never-married",
+        "occupation": "Adm-clerical",
+        "relationship": "Not-in-family",
+        "race": "White",
+        "sex": "Male",
+        "capital-gain": 1000000,
+        "capital-loss": 0,
+        "hours-per-week": 50,
+        "native-country": "Germany",
+        "salary": ">50k"
+    }
+    return pd.DataFrame([input_data_with_label])
+
+
+@pytest.fixture(scope='session')
 def ohe():
     ohe = joblib.load("model/OHE.pkl")
     return ohe
@@ -93,6 +115,14 @@ def test_data_process_data_x(data, ohe, lb, cat_features, expected_output):
     X, y, encoder, lb = process_data(data, categorical_features=cat_features, label=None, training=False, encoder=ohe,
                                      lb=lb)
     assert (X == expected_output).all()
+
+
+def test_data_process_data_x_with_label(data_with_label, ohe, lb, cat_features, expected_output):
+    X, y, encoder, lb = process_data(data_with_label, categorical_features=cat_features, label="salary", training=False,
+                                     encoder=ohe,
+                                     lb=lb)
+    assert (X == expected_output).all()
+    assert y == [[0]]
 
 
 def test_data_process_data_encoder(data, ohe, lb, cat_features):
