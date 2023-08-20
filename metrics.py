@@ -1,15 +1,16 @@
 import logging
+
 import joblib
 import pandas as pd
-import numpy as np
-from model import compute_model_metrics
+
 from data import process_data
+from model import compute_model_metrics
 
 logging.basicConfig(filename="slice_output.txt", level=logging.INFO, format="%(message)s")
 logger = logging.getLogger()
 
 # Load in the data
-#logger.info("Loading the dataset")
+# logger.info("Loading the dataset")
 test = pd.read_csv("./data/test.csv")
 
 # Load in the OneHotEncoder, LabelBinarizer and Model
@@ -42,7 +43,8 @@ for cat in ["workclass", "race", "sex", "relationship"]:
     logger.info("\n")
     for val in test[cat].unique():
         X_slice, y_slice, encoder, lb = process_data(
-            test[test[cat] == val], categorical_features=cat_features, label="salary", training=False, encoder=encoder, lb=lb
+            test[test[cat] == val], categorical_features=cat_features, label="salary", training=False, encoder=encoder,
+            lb=lb
         )
 
         precision, recall, fbeta, _ = compute_model_metrics(y_slice, model.predict(X_slice))

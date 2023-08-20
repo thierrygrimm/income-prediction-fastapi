@@ -8,8 +8,6 @@ sys.path.append(parent)
 from fastapi.testclient import TestClient
 from main import app
 
-client = TestClient(app)
-
 
 def test_main_api_get_root():
     with TestClient(app) as client:
@@ -36,10 +34,9 @@ def test_main_api_inference_negative_example():
         # Example expected to be negative
         r = client.post("/predict", json={"age": 75, "workclass": "Never-worked", "fnlgt": 77516, "education": "9th",
                                           "education-num": 1, "marital-status": "Married-civ-spouse",
-                                          "occupation": "Adm-clerical",
-                                          "relationship": "Not-in-family", "race": "Black", "sex": "Female",
-                                          "capital-gain": 0,
-                                          "capital-loss": 100000, "hours-per-week": 0, "native-country": "Vietnam"})
+                                          "occupation": "Adm-clerical", "relationship": "Not-in-family",
+                                          "race": "Black", "sex": "Female", "capital-gain": 0, "capital-loss": 100000,
+                                          "hours-per-week": 0, "native-country": "Vietnam"})
         assert r.status_code == 200
         assert r.json() == {"prediction": "<=50K"}
 

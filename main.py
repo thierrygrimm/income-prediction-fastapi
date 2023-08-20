@@ -3,43 +3,25 @@ import pandas as pd
 from fastapi import FastAPI, Body
 from pydantic import BaseModel, ConfigDict, Field, PositiveInt, NonNegativeInt
 
-from format import *
+from format import Workclass, Education, Marital, Occupation, Sex, Relationship, Race, Country
 from model import inference
 
 # Instantiate the app.
 app = FastAPI(
-    title="Census API",
+    title="Census Income API",
     description="An API that classifies individuals into high salary (>50k) and low salary (<=50k) from Census Bureau data.",
     version="1.0.0",
 )
 
 
-############################################# Startup
-
-# Load model with async
-@app.on_event('startup')
-async def load_model():
-    global model
-    model = joblib.load("model/rfc_model.pkl")
-
-
-############################################# Endpoint 1
-
-# Define a GET on the root endpoint.
-@app.get("/")
-async def say_hello():
-    return {"greeting": "Hello World!"}
-
-
-############################################# Endpoint 2
-
-
-def hyphenize(string: str) -> str:
+# Helper function for alias names
+def hyphenate(string: str) -> str:
     return string.replace("_", "-")
 
 
+# Helper class with TypeHinting
 class Input(BaseModel):
-    Body(model_config=ConfigDict(alias_generator=hyphenize))
+    Body(model_config=ConfigDict(alias_generator=hyphenate))
 
     class Config:
         use_enum_values = True
@@ -62,7 +44,7 @@ class Input(BaseModel):
         examples=
         [
             {
-                'age': 39,
+                'age': 38,
                 'workclass': 'State-gov',
                 'fnlgt': 77516,
                 'education': 'Bachelors',
@@ -81,7 +63,20 @@ class Input(BaseModel):
     )
 
 
-# Parameters which are not declared in the path are automatically query parameters
+# Load model on startup
+@app.on_event('startup')
+async def load_model():
+    global model
+    model = joblib.load("model/rfc_model.pkl")
+
+
+# Root GET Endpoint.
+@app.get("/")
+async def say_hello():
+    return {"greeting": "Hello World!"}
+
+
+# Inference POST Endpoint
 @app.post("/predict")
 async def predict_from_data(data: Input):
     input_data = pd.DataFrame([data.dict()])
