@@ -21,3 +21,4 @@ data = {
 r = requests.post("https://census-income-prediction.onrender.com/predict", data=json.dumps(data))
 
 print(r.json())
+print(r.status_code)
