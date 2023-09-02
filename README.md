@@ -1,5 +1,7 @@
 <a name="readme-top"></a>
 
+![Example](Images/Census_Income.png "Example")
+
 # Census Income Prediction with FastAPI [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EFQXNQ7UYXYKW&source=url)
 
 <details>
@@ -20,6 +22,7 @@
         <li><a href="#requirements">Requirements</a></li>
         <li><a href="#usage">Usage</a></li>
         <li><a href="#running">Running</a></li>
+        <li><a href="#querying">Querying</a></li>
       </ul>
     </li>
     <li><a href="#unit-testing">Unit Testing</a></li>
@@ -47,6 +50,7 @@ To create a RESTful API that can be queried, FastAPI in combination with Pydanti
 format for inputs) was used. Subsequently, the API was deployed as a web application, but the webserver is not publicly
 accessible anymore.
 The ```RESTful API``` has 2 different endpoints:
+
 * (GET) at ```/``` on the root giving a welcome message
 * (POST) at ```/predict``` that does model inference on the body with data in json format
 
@@ -83,7 +87,12 @@ When analyzing across data slices, model performance is higher for low-salary in
 ├── * README.md                   # Project overview and instructions                    
 ├── requirements.txt              # Python module requirements
 ├── slice_output.txt              # Output of metrics.py
-├── tests                         # Unit tests
+├── tests                         # Unit test suite
+│   ├── test_data.py                # Tests data processing
+│   ├── test_main.py                # Tests API
+│   ├── test_metrics.py             # Tests metrics prerequisites
+│   ├── test_model.py               # Tests predictions and model metrics
+│   └── test_train_model.py         # Tests training prerequisites
 └── train_model.py                # Model training pipeline
 ```
 
@@ -103,7 +112,6 @@ python -m pip install -r requirements.txt
 
 The main code for the API can be found in ```main.py```.
 
-
 ### Running
 
 To run the program execute the following command from the command line (CLI) :
@@ -112,30 +120,52 @@ To run the program execute the following command from the command line (CLI) :
 uvicorn main:app --reload
 ~~~
 
-By default this will run the API on localhost at ```http://127.0.0.1:8000```.
+By default, this will run the API on localhost on ```http://127.0.0.1:8000```. Beware if this port was already occupied
+it might be deployed on a different port or not be functional. By default, there is a greeting at the root by GET:
 
-To test and understand the API you can access the Swagger UI docs from your browser under:
+![Querying](Images/live_get.png "Querying")
+
+
+To send sample queries and test the API you can access the Swagger UI docs from your browser under:
+
 ~~~
 http://127.0.0.1:8000/docs
 ~~~
 
-Beware if this port was already occupied it might be deployed on a different one or not work.
+This will render an overview of the different API endpoints including the ```/predict``` POST endpoint:
+
+![Example](Images/example.png "Example")
+
+### Querying
+
+To query your deployed API edit the script ```query_api.py``` to include your API's host and port.
+
+<img src="Images/live_post.png" width="400">
+
+
+You can then query by running it in a terminal and should receive both the prediction and status code.
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Unit testing
 
-To test all functions if deemed necessary in the local file directory run:
+To run a Unit test suite, in the local file directory run:
 
 ~~~
-pytest 
+pytest -vv
 ~~~
 
-To query your deployed API edit the script ```query_api.py``` to include your API's host and port.
+To run a specific Unit test, as for example for the ```main.py``` you may run:
 
-![Querying](Images/live_post.png "Querying")
+~~~
+pytest tests/test_main.py -vv
+~~~
 
-You can then query by running it in a terminal and should receive both the prediction and status code.
+This project makes use of GitHub actions. Upon a push to main the test suite and other components such as flake8 or
+codecov will automatically be run:
+
+![Querying](Images/continuous_integration.png "Querying")
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -148,6 +178,8 @@ men. Another limitation of the model is the necessity for complete input data. M
 off-the-gate.
 
 It is recommended this model is strictly used for bias and fairness-related studies.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Acknowledgments
 
