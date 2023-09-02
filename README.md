@@ -58,7 +58,7 @@ The ```RESTful API``` has 2 different endpoints:
 
 F1 classification with a macro average of 0.79, 0.68 for the minority class, and 0.90 for the majority class.
 
-![Classification report](Images/metrics.png "Model Classification report")
+<img src="Images/metrics.png" width="350">
 
 When analyzing across data slices, model performance is higher for low-salary individuals.
 
