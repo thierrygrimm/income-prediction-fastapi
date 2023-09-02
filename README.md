@@ -43,6 +43,12 @@ and tested). It is built with unit tests which also log any errors, info and war
 validation and the API unit tests were incorporated into a CI/CD framework using GitHub Actions. On a push it
 automatically runs flake8, pytest unit tests and codecov to ensure adequate code coverage.
 
+:star2: Highlights:
+
+1. Project evaluated model performance on slices of the population to check for bias and fairness
+2. Utilized a CI/CD framework through GitHub Actions with unit tests, codecov and flake8
+3. FastAPI implements a RESTful API with Pydantic performing Type hinting
+
 Data segregation was performed with a regular train-test-split with 80% used for training and 20% for testing
 On the backend predictions are made using a `Random Forest` model.
 
