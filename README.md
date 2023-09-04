@@ -4,6 +4,16 @@
 
 # Census Income Prediction with FastAPI [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EFQXNQ7UYXYKW&source=url)
 
+<div align='left'>
+
+[![](https://img.shields.io/badge/FastAPI-009688.svg?style=for-the-badge&logo=FastAPI&logoColor=white 'FastAPI')](https://fastapi.tiangolo.com)
+[![](https://img.shields.io/badge/GitHub%20Actions-2088FF.svg?style=for-the-badge&logo=GitHub-Actions&logoColor=white 'Github Actions')](https://github.com/thierrygrimm/income-prediction-fastapi/actions)
+[![](https://img.shields.io/badge/Pydantic-E92063.svg?style=for-the-badge&logo=Pydantic&logoColor=white 'Pydantic')](https://docs.pydantic.dev/)
+[![](https://img.shields.io/badge/Pytest-0A9EDC.svg?style=for-the-badge&logo=Pytest&logoColor=white 'Pytest')](https://docs.pytest.org)
+[![](https://img.shields.io/badge/scikitlearn-F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white 'Scikit-learn')](https://scikit-learn.org)
+
+</div>
+
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -196,7 +206,7 @@ It is recommended this model is strictly used for bias and fairness-related stud
 ## Issues
 
 Found a bug? Want more features? Find something missing in the documentation? Let me know! Please don't hesitate
-to [file an issue](https://github.com/thierrygrimm/Census-Income-Prediction-FastAPI//issues/new) and make a
+to [file an issue](https://github.com/thierrygrimm/income-prediction-fastapi/issues/new) and make a
 recommendation.
 
 ## License
