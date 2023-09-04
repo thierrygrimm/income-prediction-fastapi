@@ -6,6 +6,8 @@
 
 <div align='left'>
 
+
+[![](https://img.shields.io/badge/Codecov-F01F7A.svg?style=for-the-badge&logo=Codecov&logoColor=white 'Codecov')](https://about.codecov.io)
 [![](https://img.shields.io/badge/FastAPI-009688.svg?style=for-the-badge&logo=FastAPI&logoColor=white 'FastAPI')](https://fastapi.tiangolo.com)
 [![](https://img.shields.io/badge/GitHub%20Actions-2088FF.svg?style=for-the-badge&logo=GitHub-Actions&logoColor=white 'Github Actions')](https://github.com/thierrygrimm/income-prediction-fastapi/actions)
 [![](https://img.shields.io/badge/Pydantic-E92063.svg?style=for-the-badge&logo=Pydantic&logoColor=white 'Pydantic')](https://docs.pydantic.dev/)
