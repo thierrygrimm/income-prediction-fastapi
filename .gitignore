@@ -112,4 +112,7 @@ wandb/
 mlruns/
 outputs/
 random_forest_dir/
+starter/
 multirun/
+*Untitled.ipynb
+sanitycheck.py
